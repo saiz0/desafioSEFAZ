@@ -1,7 +1,7 @@
 package models;
 
 public class Telefone {
-	private String numero, tipo; 		
+	private String numero, tipo, id; 		
 	private int ddd;
 	
 	
@@ -31,4 +31,13 @@ public class Telefone {
 		this.ddd = ddd;
 	}
 
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	
 }

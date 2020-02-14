@@ -24,7 +24,7 @@ public class PessoaDAO {
 				pessoa = new Pessoa();
 				pessoa.setId(resultSet.getString("idPessoa"));
 				pessoa.setNome(resultSet.getString("nome"));
-				pessoa.setEmail(resultSet.getString("nome"));
+				pessoa.setEmail(resultSet.getString("email"));
 
 			}
 
@@ -69,7 +69,7 @@ public class PessoaDAO {
 				pessoa = new Pessoa();
 				pessoa.setId(resultSet.getString("idPessoa"));
 				pessoa.setNome(resultSet.getString("nome"));
-				pessoa.setEmail(resultSet.getString("nome"));
+				pessoa.setEmail(resultSet.getString("email"));
 				pessoas.add(pessoa);
 
 			}
