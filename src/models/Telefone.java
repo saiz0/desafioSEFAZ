@@ -1,11 +1,17 @@
 package models;
 
+import java.util.ArrayList;
+
+import controllers.TelefoneDAO;
+
 public class Telefone {
 	private String numero, tipo, id; 		
 	private int ddd;
 	
 	
-	
+	public ArrayList<Telefone> listAll(Pessoa pessoa) {
+		return new TelefoneDAO().listAll(pessoa);
+	}	
 	//sets e gets
 	public String getNumero() {
 		return numero;

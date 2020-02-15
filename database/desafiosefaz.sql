@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 15-Fev-2020 às 04:35
+-- Tempo de geração: 15-Fev-2020 às 20:38
 -- Versão do servidor: 10.4.11-MariaDB
 -- versão do PHP: 7.2.26
 
@@ -44,7 +44,8 @@ end$$
 DROP PROCEDURE IF EXISTS `PessoaDelete`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `PessoaDelete` (`pidPessoa` VARCHAR(255))  begin
 	start transaction;
-	delete pessoa, telefone from pessoa inner join telefone on pessoa.idPessoa = telefone.idPessoa where pessoa.idPessoa = pidPessoa;
+    delete telefone from telefone where telefone.idPessoa = pidPessoa;
+	delete pessoa from pessoa where pessoa.idPessoa = pidPessoa;
     commit;
 end$$
 
@@ -55,7 +56,7 @@ end$$
 
 DROP PROCEDURE IF EXISTS `PessoaLogin`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `PessoaLogin` (`pEmail` VARCHAR(255), `pSenha` VARCHAR(255))  begin
-	select pessoa.nome, pessoa.email, pessoa.idPessoa
+	select pessoa.idPessoa, pessoa.nome, pessoa.email
     from pessoa  where pessoa.email = pEmail and pessoa.senha = pSenha;
 end$$
 
@@ -91,7 +92,7 @@ end$$
 
 DROP PROCEDURE IF EXISTS `TelefoneList`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `TelefoneList` (`pidPessoa` VARCHAR(255))  begin
-	select telefone.ddd, telefone.numero, telefone.tipo from telefone 
+	select telefone.idTelefone, telefone.ddd, telefone.numero, telefone.tipo from telefone 
     inner join pessoa on pessoa.idPessoa = telefone.idPessoa where pessoa.idPessoa = pidPessoa;
 end$$
 

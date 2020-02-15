@@ -14,6 +14,12 @@ public class Pessoa {
 	public void create() {
 		new PessoaDAO().create(this);
 	}
+	public void delete() {
+		new PessoaDAO().delete(this);
+	}
+	public Pessoa login() {
+		 return new PessoaDAO().login(this);
+	}
 		
 	//sets e gets
 	public String getNome() {

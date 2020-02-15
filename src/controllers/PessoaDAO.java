@@ -35,6 +35,33 @@ public class PessoaDAO {
 		BancoDados.fechar();
 		return pessoa;
 	}
+	public Pessoa login(Pessoa pessoa) {
+
+		BancoDados.conectar();
+		ResultSet resultSet = null;
+		resultSet = BancoDados.receberDados("CALL PessoaLogin('" 
+				+ pessoa.getEmail()	
+				+ "','" 
+				+ pessoa.getSenha() 
+				+ "')");
+
+		try {
+			if (resultSet.next()) {
+				pessoa = new Pessoa();
+				pessoa.setId(resultSet.getString("idPessoa"));
+				pessoa.setNome(resultSet.getString("nome"));
+				pessoa.setEmail(resultSet.getString("email"));
+
+			}else {
+				pessoa = null;
+			}
+
+		} catch (SQLException e) {
+
+		}
+		BancoDados.fechar();
+		return pessoa;
+	}
 
 	public void create(Pessoa pessoa) {
 		BancoDados.conectar();		

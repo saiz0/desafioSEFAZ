@@ -19,6 +19,8 @@
 </head>
 
 <body>
+	<a class="" href="index.jsp">Entrar</a>
+
 	<div class="card">
 		<div class="card-header">
 			<h4>Sing Up</h4>
