@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+
 import database.BancoDados;
 import models.Pessoa;
 
@@ -36,15 +37,21 @@ public class PessoaDAO {
 	}
 
 	public void create(Pessoa pessoa) {
-		BancoDados.conectar();
-		BancoDados.enviarDados("CALL PessoaCreate('" 
-		+ pessoa.getNome() 
-		+ "','" 
-		+ pessoa.getEmail() 
-		+ "','"				
-		+ pessoa.getSenha()
-		+ "')");
-		BancoDados.fechar();
+		BancoDados.conectar();		
+		try {
+			BancoDados.enviarDados("CALL PessoaCreate('" 
+					+ pessoa.getNome() 
+					+ "','" 
+					+ pessoa.getEmail() 
+					+ "','"				
+					+ pessoa.getSenha()
+					+ "')");
+					BancoDados.fechar();		
+					new TelefoneDAO().create(pessoa);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
 
 	}
 

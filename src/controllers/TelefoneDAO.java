@@ -16,8 +16,8 @@ public class TelefoneDAO {
 		BancoDados.conectar();
 		
 		for(Telefone telefone : pessoa.getTelefones() ) {
-			BancoDados.enviarDados("CALL PessoaCreate('" 
-					+ pessoa.getId()
+			BancoDados.enviarDados("CALL TelefoneCreate('" 
+					+ pessoa.getEmail()
 					+ "','" 
 					+ telefone.getDdd()
 					+ "','" 

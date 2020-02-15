@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 14-Fev-2020 às 19:02
+-- Tempo de geração: 15-Fev-2020 às 04:35
 -- Versão do servidor: 10.4.11-MariaDB
 -- versão do PHP: 7.2.26
 
@@ -31,8 +31,6 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS `PessoaCreate`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `PessoaCreate` (`pNome` VARCHAR(255), `pEmail` VARCHAR(255), `pSenha` VARCHAR(255))  begin
 	start transaction;
-	insert into usuario (email, senha) values (pEmail,pSenha);
-
 	insert into pessoa (nome, email , senha) values (pNome,pEmail,pSenha);
     commit;
 end$$
@@ -70,10 +68,11 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `PessoaUpdade` (`pidPessoa` VARCHAR(
 end$$
 
 DROP PROCEDURE IF EXISTS `TelefoneCreate`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `TelefoneCreate` (`pidPessoa` VARCHAR(255), `pDdd` VARCHAR(255), `pNumero` VARCHAR(255), `pTipo` VARCHAR(255))  begin
+CREATE DEFINER=`root`@`localhost` PROCEDURE `TelefoneCreate` (`pEmail` VARCHAR(255), `pDdd` VARCHAR(255), `pNumero` VARCHAR(255), `pTipo` VARCHAR(255))  begin
 	start transaction;
     savepoint safepoint;    
-	insert into telefone (idPessoa, ddd, numero, tipo) values (pidPessoa,pDdd, pNumero,pTipo);
+    select idPessoa from pessoa where pessoa.email =pEmail into @idPessoa;  
+	insert into telefone (idPessoa, ddd, numero, tipo) values (@idPessoa,pDdd, pNumero,pTipo);
     commit;
 end$$
 
