@@ -80,3 +80,11 @@ function logout() {
 		url : "UsuarioLogout"
 	});
 }
+
+
+//validação do campos numero
+function numero(txt) {
+	txt.value = txt.value.replace(/[^0-9\n\r-]+/g, '');
+	txt.value = txt.value.replace(/ /g, '');
+
+}

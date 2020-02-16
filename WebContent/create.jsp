@@ -41,8 +41,8 @@
 							class="col-form-label">Telefone</label>
 						<div class="row form-group">
 							<input type="text" class="form-control col-2" name="dddTelefone"
-								id="dddTelefone" required> <input type="text"
-								class="form-control col-10" name="telefone" id="telefone"
+								id="dddTelefone"  onkeyup="numero(this)" required> <input type="text"
+								class="form-control col-10" name="telefone" id="telefone"  onkeyup="numero(this)"
 								required>
 						</div>
 					</div>
@@ -51,8 +51,8 @@
 							class="col-form-label">Celular</label>
 						<div class=" form-group row">
 							<input type="text" class="form-control col-2" name="dddCelular"
-								id="dddCelular" required> <input type="text"
-								class="form-control col-10" name="celular" id="celular" required>
+								id="dddCelular" onkeyup="numero(this)" required> <input type="text"
+								class="form-control col-10" name="celular" id="celular" onkeyup="numero(this)" required>
 						</div>
 					</div>
 
