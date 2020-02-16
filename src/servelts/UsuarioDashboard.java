@@ -55,9 +55,7 @@ public class UsuarioDashboard extends HttpServlet {
 			response.setContentType("application/json");
 			PrintWriter out = response.getWriter();
 			Gson gson = new Gson();
-
 			String info = gson.toJson(pessoa);
-			System.out.println(info);
 			out.write(info);
 			out.close();
 		}

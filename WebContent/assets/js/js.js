@@ -1,4 +1,5 @@
 function singup() {
+
 	var nome = $('#nome').val();
 	var email = $('#email').val();
 	var telefone = $('#telefone').val();
@@ -6,7 +7,6 @@ function singup() {
 	var celular = $('#celular').val();
 	var dddCelular = $('#dddCelular').val();
 	var senha = $('#senha').val();
-
 	// verificação de campos
 	if (nome == '' || email == '' || telefone == '' || celular == ''
 			|| senha == '' || dddTelefone == '' || dddCelular == '') {
@@ -21,7 +21,9 @@ function singup() {
 				nome : nome,
 				email : email,
 				telefone : telefone,
+				dddTelefone : dddTelefone,
 				celular : celular,
+				dddCelular : dddCelular,
 				senha : senha,
 			},
 			cache : false,
