@@ -45,7 +45,7 @@ public class UsuarioDashboard extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
+		// resgatando a pessoa salva na session
 		HttpSession session = request.getSession();
 		Pessoa pessoa = (Pessoa) (session.getAttribute("pessoa"));
 

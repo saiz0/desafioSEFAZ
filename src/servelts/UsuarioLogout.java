@@ -36,6 +36,8 @@ public class UsuarioLogout extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		//excluindo a session
 		HttpSession session = request.getSession();
 		session.invalidate();
 		response.sendRedirect(request.getContextPath() + "/index.jsp");

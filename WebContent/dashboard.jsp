@@ -16,13 +16,11 @@
 
 
 <!-- CSS -->
-<link href="assets/css/css.css" rel="stylesheet">
 <link href="assets/css/bootstrap.css" rel="stylesheet">
 </head>
 
 <body>
-
-	<a class="" href="UsuarioLogout">Sair</a>
+	<a class="nav-link" href="UsuarioLogout">Sair</a>
 	<div class="card">
 		<div class="card-header">
 			<h4>Dashboard</h4>
@@ -45,21 +43,32 @@
 						<div class="row">
 							<div class="form-group col-12">
 								<label class="col-form-label">Nome</label> <input type="text"
-									class="form-control" name="pnome" id="pnome" required>
+									class="form-control" name="nome" id="nome" required>
 							</div>
 							<div class="form-group col-12">
 								<label for="email" class="col-form-label">Email</label> <input
-									type="email" class="form-control" name="pemail" id="pemail"
+									type="email" class="form-control" name="email" id="email"
 									required>
 							</div>
 							<div class="form-group col-12">
-								<label class="col-form-label">Telefone</label> <input
-									type="text" class="form-control" name="ptelefone"
-									id="ptelefone" required>
+								<input type="hidden" id="idTelefone" name="idTelefone">
+								<label class="col-form-label">Telefone</label>
+								<div class="row form-group">
+									<input type="text" class="form-control col-2"
+										name="dddTelefone" id="dddTelefone" required> <input
+										type="text" class="form-control col-10" name="telefone"
+										id="telefone" required>
+								</div>
 							</div>
 							<div class="form-group col-12">
-								<label class="col-form-label">Celular</label> <input type="text"
-									class="form-control" name="pcelular" id="pcelular" required>
+								<input type="hidden" id="idCelular" name="idCelular"> <label
+									class="col-form-label">Celular</label>
+								<div class=" form-group row">
+									<input type="text" class="form-control col-2" name="dddCelular"
+										id="dddCelular" required> <input type="text"
+										class="form-control col-10" name="celular" id="celular"
+										required>
+								</div>
 							</div>
 
 							<div class="form-group col-12">
@@ -76,7 +85,6 @@
 								onclick="usuarioDelete()">Deletar Conta</button>
 						</div>
 					</form>
-
 
 				</div>
 				<div class="tab-pane fade" id="usuarios" role="tabpanel"

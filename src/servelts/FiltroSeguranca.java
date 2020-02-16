@@ -38,6 +38,7 @@ public class FiltroSeguranca implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
+		//verificando se existe uma pessoa logado 
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpSession session = req.getSession();
 		boolean logado = false;

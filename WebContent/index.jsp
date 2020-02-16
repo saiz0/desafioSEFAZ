@@ -13,13 +13,12 @@
 
 
 <!-- CSS -->
-<link href="assets/css/css.css" rel="stylesheet">
 <link href="assets/css/bootstrap.css" rel="stylesheet">
 
 
 </head>
 <body>
-	<a class="" href="create.jsp">Cadastrar</a>
+	<a class="nav-link" href="create.jsp">Cadastrar</a>
 
 	<div class="card">
 		<div class="card-header">

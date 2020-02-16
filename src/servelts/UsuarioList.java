@@ -46,7 +46,7 @@ public class UsuarioList extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		//Chamada do metodo de listagem de pessoas e construindo um array com oq foi retonado
 		Pessoa pessoa = new Pessoa();
 		Telefone telefone = null;
 
@@ -57,11 +57,10 @@ public class UsuarioList extends HttpServlet {
 			pessoas.get(i).setTelefones(telefone.listAll(pessoas.get(i)));
 
 		}
+		//transformando o array de pessoa em json e retornando para js
 		PrintWriter out = response.getWriter();
 		Gson gson = new Gson();
-
 		String info = gson.toJson(pessoas);
-		System.out.println(info);
 		out.write(info);
 		out.close();
 

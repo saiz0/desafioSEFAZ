@@ -44,25 +44,28 @@ public class UsuarioLogin extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		//construindo para fazer login
 		Pessoa pessoa = new Pessoa();
 		pessoa.setEmail(request.getParameter("email"));
 		pessoa.setSenha(request.getParameter("senha"));
 		pessoa = pessoa.login();
 		String status;
 
+		//verificando se o email e senha retonar um usuario valido
 		if (pessoa != null) {
 			Telefone telefone = new Telefone();
 			pessoa.setTelefones(telefone.listAll(pessoa));
 			HttpSession session = request.getSession(true);
 			session.setAttribute("pessoa", pessoa);
-			session.setAttribute("logado", true);
-		
+			session.setAttribute("logado", true);		
 			status = "1";
 
 		} else {
 			status = "0";
 
 		}
+		
+		//retornando para o js
 		PrintWriter out = response.getWriter();
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");

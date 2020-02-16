@@ -70,6 +70,20 @@ public class PessoaDAO {
 		}
 
 	}
+	public void update(Pessoa pessoa) {
+		BancoDados.conectar();
+		try {
+			BancoDados.enviarDados("CALL PessoaUpdate('" 
+					+ pessoa.getId() + "','" 
+					+ pessoa.getNome() + "','" 
+					+ pessoa.getEmail() + "','"
+					+ pessoa.getSenha() + "')");
+			BancoDados.fechar();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+	}
 
 	public void delete(Pessoa pessoa) {
 		BancoDados.conectar();

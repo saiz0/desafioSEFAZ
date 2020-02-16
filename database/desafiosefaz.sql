@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 15-Fev-2020 às 20:38
+-- Tempo de geração: 16-Fev-2020 às 15:15
 -- Versão do servidor: 10.4.11-MariaDB
 -- versão do PHP: 7.2.26
 
@@ -51,7 +51,7 @@ end$$
 
 DROP PROCEDURE IF EXISTS `PessoaList`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `PessoaList` ()  begin
-	select pessoa.nome, pessoa.email from pessoa;
+	select pessoa.idPessoa, pessoa.nome, pessoa.email from pessoa;
 end$$
 
 DROP PROCEDURE IF EXISTS `PessoaLogin`$$
@@ -60,8 +60,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `PessoaLogin` (`pEmail` VARCHAR(255)
     from pessoa  where pessoa.email = pEmail and pessoa.senha = pSenha;
 end$$
 
-DROP PROCEDURE IF EXISTS `PessoaUpdade`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `PessoaUpdade` (`pidPessoa` VARCHAR(255), `pNome` VARCHAR(255), `pEmail` VARCHAR(255), `pSenha` VARCHAR(255))  begin
+DROP PROCEDURE IF EXISTS `PessoaUpdate`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `PessoaUpdate` (`pidPessoa` VARCHAR(255), `pNome` VARCHAR(255), `pEmail` VARCHAR(255), `pSenha` VARCHAR(255))  begin
 	start transaction;
     update pessoa set nome= pNome, email = pEmail, senha = pSenha where pessoa.idPessoa = pidPessoa;
     
@@ -97,10 +97,10 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `TelefoneList` (`pidPessoa` VARCHAR(
 end$$
 
 DROP PROCEDURE IF EXISTS `TelefoneUpdate`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `TelefoneUpdate` (`pidPessoa` VARCHAR(255), `pidTelefone` VARCHAR(255), `pDdd` VARCHAR(255), `pNumero` VARCHAR(255), `pTipo` VARCHAR(255))  begin
+CREATE DEFINER=`root`@`localhost` PROCEDURE `TelefoneUpdate` (`pidTelefone` VARCHAR(255), `pDdd` VARCHAR(255), `pNumero` VARCHAR(255), `pTipo` VARCHAR(255))  begin
 	start transaction;
 	update telefone 
-    set ddd= pDdd, numero = pNumero, tipo = pTipo where telefone.idPessoa = pidPessoa and telefone.idTelefone =pidTelefone;
+    set ddd= pDdd, numero = pNumero, tipo = pTipo where telefone.idTelefone =pidTelefone;
     commit;
 end$$
 

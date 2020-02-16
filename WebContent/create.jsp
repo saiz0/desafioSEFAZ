@@ -14,12 +14,11 @@
 
 
 <!-- CSS -->
-<link href="assets/css/css.css" rel="stylesheet">
 <link href="assets/css/bootstrap.css" rel="stylesheet">
 </head>
 
 <body>
-	<a class="" href="index.jsp">Entrar</a>
+	<a class="nav-link" href="index.jsp">Entrar</a>
 
 	<div class="card">
 		<div class="card-header">
@@ -38,12 +37,23 @@
 							required>
 					</div>
 					<div class="form-group col-12">
-						<label class="col-form-label">Telefone</label> <input type="text"
-							class="form-control" name="telefone" id="telefone" required>
+						<input type="hidden" id="idTelefone" name="idTelefone"> <label
+							class="col-form-label">Telefone</label>
+						<div class="row form-group">
+							<input type="text" class="form-control col-2" name="dddTelefone"
+								id="dddTelefone" required> <input type="text"
+								class="form-control col-10" name="telefone" id="telefone"
+								required>
+						</div>
 					</div>
 					<div class="form-group col-12">
-						<label class="col-form-label">Celular</label> <input type="text"
-							class="form-control" name="celular" id="celular" required>
+						<input type="hidden" id="idCelular" name="idCelular"> <label
+							class="col-form-label">Celular</label>
+						<div class=" form-group row">
+							<input type="text" class="form-control col-2" name="dddCelular"
+								id="dddCelular" required> <input type="text"
+								class="form-control col-10" name="celular" id="celular" required>
+						</div>
 					</div>
 
 					<div class="form-group col-12">
@@ -54,7 +64,8 @@
 
 				</div>
 				<div class="form-group">
-					<button type="button" class="btn btn-primary btn-lg btn-block" onclick="singup()">Registrar</button>
+					<button type="button" class="btn btn-primary btn-lg btn-block"
+						onclick="singup()">Registrar</button>
 				</div>
 			</form>
 		</div>

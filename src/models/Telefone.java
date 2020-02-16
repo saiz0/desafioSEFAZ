@@ -12,6 +12,9 @@ public class Telefone {
 	public ArrayList<Telefone> listAll(Pessoa pessoa) {
 		return new TelefoneDAO().listAll(pessoa);
 	}	
+	public void update() {
+		new TelefoneDAO().update(this);
+	}
 	//sets e gets
 	public String getNumero() {
 		return numero;

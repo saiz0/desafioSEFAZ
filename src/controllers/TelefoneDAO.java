@@ -21,6 +21,18 @@ public class TelefoneDAO {
 
 	}
 
+	public void update(Telefone telefone) {
+		BancoDados.conectar();
+		try {
+			BancoDados.enviarDados("CALL TelefoneUpdate('" + telefone.getId() + "','" + telefone.getDdd() + "','"
+					+ telefone.getNumero() + "','" + telefone.getTipo() + "')");
+			BancoDados.fechar();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+	}
+
 	public void delete(Telefone telefone) {
 		BancoDados.conectar();
 		BancoDados.enviarDados("CALL TelefoneDelete('" + telefone.getId() + "')");

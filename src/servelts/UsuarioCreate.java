@@ -47,13 +47,13 @@ public class UsuarioCreate extends HttpServlet {
 		pessoa.setSenha(request.getParameter("senha"));
 		
 		Telefone telefone = new Telefone();
-		telefone.setNumero(request.getParameter("telefone"));
-		telefone.setDdd(00);
+		telefone.setNumero(request.getParameter("celular"));
+		telefone.setDdd(Integer.parseInt(request.getParameter("dddTelefone")));
 		telefone.setTipo("Numero");
 		
 		Telefone celular = new Telefone();
 		celular.setNumero(request.getParameter("celular"));
-		celular.setDdd(00);
+		telefone.setDdd(Integer.parseInt(request.getParameter("dddCelular")));
 		celular.setTipo("Celular");
 		
 		ArrayList<Telefone> telefones = new ArrayList<Telefone>();

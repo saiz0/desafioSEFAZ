@@ -14,6 +14,9 @@ public class Pessoa {
 	public void create() {
 		new PessoaDAO().create(this);
 	}
+	public void update() {
+		new PessoaDAO().update(this);
+	}
 	public void delete() {
 		new PessoaDAO().delete(this);
 	}
