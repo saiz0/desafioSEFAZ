@@ -20,6 +20,9 @@ public class Pessoa {
 	public Pessoa login() {
 		 return new PessoaDAO().login(this);
 	}
+	public ArrayList<Pessoa>  list() {
+		 return new PessoaDAO().listAll();
+	}		
 		
 	//sets e gets
 	public String getNome() {

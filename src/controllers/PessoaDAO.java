@@ -4,7 +4,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-
 import database.BancoDados;
 import models.Pessoa;
 
@@ -16,9 +15,7 @@ public class PessoaDAO {
 
 		BancoDados.conectar();
 		ResultSet resultSet = null;
-		resultSet = BancoDados.receberDados("CALL PessoaDate('" 
-				+ idPessoa						
-				+ "')");
+		resultSet = BancoDados.receberDados("CALL PessoaDate('" + idPessoa + "')");
 
 		try {
 			if (resultSet.next()) {
@@ -35,15 +32,13 @@ public class PessoaDAO {
 		BancoDados.fechar();
 		return pessoa;
 	}
+
 	public Pessoa login(Pessoa pessoa) {
 
 		BancoDados.conectar();
 		ResultSet resultSet = null;
-		resultSet = BancoDados.receberDados("CALL PessoaLogin('" 
-				+ pessoa.getEmail()	
-				+ "','" 
-				+ pessoa.getSenha() 
-				+ "')");
+		resultSet = BancoDados
+				.receberDados("CALL PessoaLogin('" + pessoa.getEmail() + "','" + pessoa.getSenha() + "')");
 
 		try {
 			if (resultSet.next()) {
@@ -52,7 +47,7 @@ public class PessoaDAO {
 				pessoa.setNome(resultSet.getString("nome"));
 				pessoa.setEmail(resultSet.getString("email"));
 
-			}else {
+			} else {
 				pessoa = null;
 			}
 
@@ -64,29 +59,21 @@ public class PessoaDAO {
 	}
 
 	public void create(Pessoa pessoa) {
-		BancoDados.conectar();		
+		BancoDados.conectar();
 		try {
-			BancoDados.enviarDados("CALL PessoaCreate('" 
-					+ pessoa.getNome() 
-					+ "','" 
-					+ pessoa.getEmail() 
-					+ "','"				
-					+ pessoa.getSenha()
-					+ "')");
-					BancoDados.fechar();		
-					new TelefoneDAO().create(pessoa);
+			BancoDados.enviarDados("CALL PessoaCreate('" + pessoa.getNome() + "','" + pessoa.getEmail() + "','"
+					+ pessoa.getSenha() + "')");
+			BancoDados.fechar();
+			new TelefoneDAO().create(pessoa);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		
 
 	}
 
 	public void delete(Pessoa pessoa) {
 		BancoDados.conectar();
-		BancoDados.enviarDados("CALL PessoaDelete('" 
-		+ pessoa.getId() 
-		+ "')");
+		BancoDados.enviarDados("CALL PessoaDelete('" + pessoa.getId() + "')");
 		BancoDados.fechar();
 	}
 
@@ -100,12 +87,12 @@ public class PessoaDAO {
 
 		try {
 			while (resultSet.next()) {
+
 				pessoa = new Pessoa();
 				pessoa.setId(resultSet.getString("idPessoa"));
 				pessoa.setNome(resultSet.getString("nome"));
 				pessoa.setEmail(resultSet.getString("email"));
 				pessoas.add(pessoa);
-
 			}
 
 		} catch (SQLException e) {
